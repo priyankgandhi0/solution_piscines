@@ -360,6 +360,14 @@ class Instructions extends StatelessWidget {
                   size: 16,
                   weight: FontWeight.w600,
                   childweight: FontWeight.w400
+              ).paddingSymmetric(horizontal: 15),
+              15.0.spaceH(),
+              appCommonTextSpan(
+                  text: 'Step 4- ',
+                  childText:ctrl.alkalinityInstruction.value,
+                  size: 16,
+                  weight: FontWeight.w600,
+                  childweight: FontWeight.w400
               ).paddingSymmetric(horizontal: 15)
             ],
           );

@@ -93,9 +93,14 @@ class TestParameter extends StatelessWidget {
                     textInputType: TextInputType.number,
                     controller: ctrl.phTextFieldController,
                     validator: (val){
+                      double value  = double.parse(ctrl.phTextFieldController.text);
+
                       if(ctrl.phTextFieldController.text.isEmpty){
                         return "Pls enter ph";
+                      }if(value > 14 || value < 0){
+                        return "Pls enter valid ph";
                       }
+
                       return null;
                     },
                   ).paddingSymmetric(horizontal: 20),

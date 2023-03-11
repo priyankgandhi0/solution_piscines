@@ -11,7 +11,7 @@ class DetailsScreenController extends GetxController with GetSingleTickerProvide
   void onInit() {
     super.onInit();
     resultData = Get.arguments;
-    chlorineSuggest(int.parse(resultData!.volume,),double.parse(resultData!.ph));
+    chlorineSuggest(int.parse(resultData!.volume,),double.parse(resultData!.ph),int.parse(resultData!.alkalinity));
     tabController = TabController(vsync: this, length: 2);
     tabController.addListener(() {
       tabIndex.value = tabController.index;
@@ -27,6 +27,7 @@ class DetailsScreenController extends GetxController with GetSingleTickerProvide
   RxInt chlorineStick = 1.obs;
   RxInt chlorinePowder = 130.obs;
   RxString phTypeProduct = "".obs;
+  RxString alkalinityInstruction = "".obs;
 
 
   launchURL() async {
@@ -41,7 +42,7 @@ class DetailsScreenController extends GetxController with GetSingleTickerProvide
   void launchURL1() async =>
       await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
 
-  chlorineSuggest(int volume,double phLevel){
+  chlorineSuggest(int volume,double phLevel,int alkalinityLevel){
     // var volume = 10000;
     int count = 25000;
     // int tempPowder = 130;
@@ -69,10 +70,21 @@ class DetailsScreenController extends GetxController with GetSingleTickerProvide
       print("powder ---> ${chlorinePowder.value}");
     }
     
-    if(phLevel <= 7.2){
+    if(phLevel <= 7.1){
       phTypeProduct.value = "PH+";
-    }else{
+    }else if(phLevel >= 7.7){
       phTypeProduct.value = "PH-";
+    } else{
+      phTypeProduct.value = "nothing for it ";
+    }
+
+    if(alkalinityLevel >= 120){
+      alkalinityInstruction.value = "Do not touch alkalinity, it is too high";
+    } else if(alkalinityLevel <= 80){
+      alkalinityInstruction.value = "Do not touch alkalinity";
+    }
+    else{
+      alkalinityInstruction.value = "alkalinity is perfect no addition needed yet";
     }
     
   }
