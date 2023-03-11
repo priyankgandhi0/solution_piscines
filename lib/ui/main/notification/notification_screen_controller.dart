@@ -19,6 +19,7 @@ class NotificationController extends GetxController{
 
     // timeText = preferences.getString(SharedPreference.SELECTED_TIME) ?? '10:05 AM';
 
+
     List<String> tempWeekList = preferences.getList(SharedPreference.WEEK_LIST) ?? [];
 
     if (tempWeekList.isNotEmpty) {

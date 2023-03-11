@@ -142,7 +142,7 @@ class NotificationsHelper {
               isDangerousOption: true)
         ],
         schedule: NotificationCalendar.fromDate(
-            date: DateTime.now().add(const Duration(days: DateTime.monday,seconds: 2))));
+            date: DateTime.now().add(const Duration(days: DateTime.friday,seconds: 2))));
   }
 
   static Future<void> resetBadgeCounter() async {

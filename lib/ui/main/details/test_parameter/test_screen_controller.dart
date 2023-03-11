@@ -12,7 +12,7 @@ class TestParameterScreenController extends GetxController{
   ResultData? allData;
   var knowTheVolume = false.obs;
   var volume;
-
+  var testParams = GlobalKey<FormState>();
   @override
   void onInit() {
     volume = Get.arguments;
